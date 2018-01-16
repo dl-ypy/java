@@ -1,0 +1,11 @@
+1.java.lang.NoClassDefFoundError:JVM动态运行期异常
+
+3.中文乱码的原因。
+4.转发和重定向时数据的传输。
+5.sql索引
+6.spring整合mybatis时，配置数据源的username不能引用db.properties文件中的内容。
+
+
+
+springboot
+1.map.get()方法得到的数据类型

@@ -1,0 +1,24 @@
+/*
+时间：2016年9月29日16:45:50
+目的：字节流和字符流的区别二
+结论：
+*/
+import java.io.*;
+
+public class Liu2_zijie_zifu{
+	public static void main(String[] args) throws Exception{
+		FileReader fr = new FileReader("G:\\java\\基础\\Liu2_zijie_zifu.java");
+		FileWriter fw = new FileWriter("G:/java/基础/zijie_zifu.txt");
+		int ch;
+		
+		ch = fr.read();
+		while (-1 != ch){
+			fw.write(ch);//写到文件中
+			ch = fr.read();
+		}
+		
+		fw.flush();//先刷新再关闭，防止出错
+		fr.close();
+		fw.close();
+	}
+}

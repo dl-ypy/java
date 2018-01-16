@@ -1,0 +1,234 @@
+import java.util.concurrent.locks.ReentrantLock;
+
+/**
+ * date:2018年1月3日22点29分
+ * @author joker
+ * ReentrantLock可以指定为公平锁（即等待时间长的线程先被执行）。
+ * 程序执行：两个线程会交替执行。
+ */
+public class Thread_21ReentrantLock_4 extends Thread{
+	private static ReentrantLock lock = new ReentrantLock(true); //参数为true则指定公平锁
+	
+	@Override
+	public void run() {
+		for (int i=0; i<100; i++) {
+			lock.lock();
+			try {
+				System.out.println(Thread.currentThread().getName()+"获得锁");
+			} finally {
+				lock.unlock();
+			}
+		}
+	}
+	
+	public static void main(String[] args) {
+		Thread_21ReentrantLock_4 t = new Thread_21ReentrantLock_4();
+		Thread t1 = new Thread(t);
+		Thread t2 = new Thread(t);
+		t1.start();
+		t2.start();
+	}
+}
+
+/**
+ Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+Thread-1获得锁
+Thread-2获得锁
+ */

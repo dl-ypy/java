@@ -1,0 +1,1 @@
+适配器模式，一端一个接口进去，另一端一个接口出去，如java.io里面的InputStreamReader

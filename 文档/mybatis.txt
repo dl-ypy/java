@@ -1,0 +1,1 @@
+1.在mybatis的配置文件中，写sql语句时，用_parameter可代替String类型的参数。

@@ -1,0 +1,27 @@
+/*
+    时间：2015年12月30日22:20:16
+    目的：简单了解包。
+*/
+package bao;//  必须是第一条语句
+
+class A
+{
+    public void f()
+    {
+        System.out.printf("AAAA\n");
+    }
+}
+
+class Package_1
+{
+    public static void main(String[] args)
+    {
+	A aa = new A();
+	aa.f();
+    }
+}
+/*
+***************结果***************
+
+*/
+

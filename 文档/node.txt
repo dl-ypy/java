@@ -1,0 +1,5 @@
+为什么做file Server？
+因为tomcat扩展为多个后，要将文件放到file Server里。
+
+
+数据库中存的是md5加密后的密码

@@ -1,0 +1,146 @@
+Struts2:
+	1、框架的集成
+			1、常用jar
+			2、配置核心控制器
+			3、struts.xml文件
+		
+	2、Struts.xml文件
+			package
+			action
+			result
+			include
+			constant
+			
+	3、Action的使用
+			a.action的实现
+				1、普通的java文件
+				2、实现action接口
+				3、继承actionsupport
+			b.获取客户端的数据
+				1、属性驱动
+				2、模型驱动
+			c.Action在配置文件中的配置方法
+				1、静态配置
+					1、每个请求都配置一个action
+					2、使用占位符   user_*  放开严格方法访问限制
+				2、动态配置
+			
+	4、验证框架   继承ActionSupport
+			1、编程式
+				重写validate方法
+			2、配置式
+				在action同级目录下创建一个配置文件   
+				-validation  结尾
+				
+	5、获取web对象的方式：
+			1、非ioc
+					a.直接
+						ServletActionContext
+					
+					b.间接
+						ActionContext
+			2、ioc
+					控制反转
+					实现相关接口
+					
+	6.OGNL表达式
+		#request.msg
+		.{? #this.  ==  }
+		@....@..
+	
+	7、Struts标签
+			非UI标签
+			
+			UI标签
+		
+	8、拦截器
+			1、创建一个java文件，实现Interceptor接口
+			2、重写相关方法
+			3、在配置文件中注册并引用拦截器
+			
+		特定方法不被拦截
+		继承MethodsFilterInteceptor
+		
+	9、文件上传
+	10、文件下载
+	11、国际化
+				
+Spring：
+	1、框架集成
+		1、架包
+		2、配置监听器
+		3、配置文件
+		
+	2、核心思想
+		1、IOC
+		2、DI
+		3、AOP：面向切面编程，OOP的一个补充，在不改变原有程序业务逻辑的情况下，动态的添加一些功能
+			常用的应用：日志、事务管理、异常管理
+			
+	3、数据源
+		c3p0
+		dbcp
+		jndi
+	4、spring中的数据库操作
+		jdbc参数模板
+		命名参数
+		
+Hibernate：
+	1、框架集成
+			1、架包
+			2、配置文件
+				反向生成、pojo类、映射文件方言、常用的设置
+	2、DML操作
+		save、update、delete、saveorupdate
+	3、vo、po
+		瞬时态
+		
+		持久态
+		
+		托管态
+			
+			
+			vo-->瞬时态和托管态   po-->持久态
+	
+	4、get和load
+		都是通过主键查询数据的
+		get方法没有延时加载，load方法有延时加载
+		get查询值为空，不报错，返回null
+		load方法查询值为空，报错
+	
+	5、hql查询
+	6、容器查询
+	7、原生本地SQL查询
+	
+	8、关联关系配置：
+		1对1
+			主键关联：
+					one-to-one
+			外键关联
+					主表：  one-to-one
+					从表：	many-to-one    unique=“true”
+			
+		1对多：
+			主表：
+				set    key        many-to-one
+			从表   many-to-one
+			
+		多对多：
+			set  table   key      many-to-many
+			
+	9、延迟加载：
+		对象实体的延迟加载：  get没有   load有
+		集合属性的延迟加载：从表数据的延迟加载
+				在配置文件的set节点可以设置load属性
+				
+	10、抓取策略：
+		从表数据的获取方法
+		1对1    select	join
+		1对多	select  join	subselect	批处理
+		
+	11、缓存管理
+			1级缓存：session级别，比较短。
+			2级缓存
+			
+			
+			
