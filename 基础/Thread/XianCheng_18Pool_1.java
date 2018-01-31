@@ -72,15 +72,21 @@ public class XianCheng_18Pool {
 	private static ExecutorService e1 = Executors.newCachedThreadPool();
 	
 	//创建一个单例线程。
-	//任意时间池中只能有一个线程
+	//任意时间池中只能有一个线程,能保证执行的顺序
 	private static ExecutorService e2 = Executors.newSingleThreadExecutor();
 	
 	//创建一个支持定时及周期性的任务执行的线程池
 	//这个池子里的线程可以按schedule依次delay执行，或周期执行
 	private static ExecutorService e3 = Executors.newScheduledThreadPool(5);
+
+	//工作窃取线程池，里面的线程在执行完自己的任务后还会自动执行其他线程的任务，是守护线程
+	ExecutorService e4 = Executors.newWorkStealingPool();
+
+	//将较大的任务进行拆分，然后将结果合并   jdk1.7的新特性
+	ForkJoinPool e5 = new ForkJoinPool();
 	
 	public static void main(String[] args) {
-		List<Future<String>> resultList = new ArrayList<Future<String>>();
+		List<Future<String>> resultList = new ArrayList<Future<String>>(); 
 		//执行runnable任务
 		for (int i=0; i<5; i++) {
 			e1.execute(new Thread1());//提交5个任务
@@ -89,7 +95,7 @@ public class XianCheng_18Pool {
 		//执行callable任务
 		for (int i=0; i<20; i++) {
 			//执行任务并将返回值赋给future
-			Future<String> future = e.submit(new Thread2(i));
+			Future<String> future = e.submit(new Thread2(i)); //表示未来执行完返回的结果为String类型
 			//将任务执行结果存储到List中
 			resultList.add(future);
 		}

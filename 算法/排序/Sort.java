@@ -23,7 +23,14 @@ public class Test{
 		arr = (Integer[])list.toArray(new Integer[list.size()]);
 		System.out.println("排序前："+Arrays.toString(arr));
 		directInsertSort(arr);
-		System.out.println("直接排序："+Arrays.toString(arr));
+		System.out.println("直接插入排序："+Arrays.toString(arr));
+		//转换为list将顺序重新打乱
+		list = Arrays.asList(arr);
+		Collections.shuffle(list);
+		arr = (Integer[])list.toArray(new Integer[list.size()]);
+		System.out.println("排序前："+Arrays.toString(arr));
+		BinaryInsertSort(arr);
+		System.out.println("二分法插入排序："+Arrays.toString(arr));
 	}
 	
 	/*
@@ -68,6 +75,38 @@ public class Test{
 			arr[j+1] = min;
 		}
 	}
+	
+	/*
+	 * 二分法插入排序
+	 * 描述：与前面的比较，循环将比当前数小的插入当前数后面，直到遇到小于等于当前数的，break，最后将初始时比较的数放到当前j的下一位
+	 * 时间复杂度：n+(n-1)+...+1=n(n+1)/2
+	 * */
+	public static void BinaryInsertSort(Integer[] arr) {
+		for (Integer i=1; i<arr.length; i++) {
+			int temp = arr[i]; //待插入的值
+			int left = 0;
+			int right = i-1;
+			int mid = 0; //中间值
+			//找到要插入的位置
+			while (left <= right) {
+				mid = (left+right)/2;
+				if (temp < arr[mid]) {
+					right = mid-1;
+				} else {
+					left = mid+1; 
+				}
+			}
+			for (int j=i-1; j>=left; j--) {
+				//比left右边大的值向后移一位，等待temp插入
+				arr[j+1] = arr[j];
+			}
+			
+			//插入temp
+			if (left != i) {  //left等于i的情况为：要插入的为最大的，直接放到最后，不需要交换
+				arr[left] = temp;
+			}
+		}
+	}
 }
 
 /**
@@ -76,4 +115,6 @@ public class Test{
  * 选择排序：[-1, 0, 5, 9, 42, 66, 77]
  * 排序前：[5, 77, 42, 9, -1, 0, 66]
  * 直接排序：[-1, 0, 5, 9, 42, 66, 77]
+ * 排序前：[0, 66, 42, 9, 77, 5, -1]
+ * 二分法插入排序：[-1, 0, 5, 9, 42, 66, 77]
 */
