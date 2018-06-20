@@ -1,0 +1,3 @@
+控制台进入到安装包的文件夹下 用命令行的方式安装
+ 
+msiexec /i VisualSVN-Server-2.7.3.msi NO_START_SERVICES=1

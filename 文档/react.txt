@@ -1,0 +1,2 @@
+1.方法绑定：方法中需要用this,为了使this一直指向这个组件，就需要进行绑定。
+2.fetch中加credentials: "include"：为了能得到cookie值。

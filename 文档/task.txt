@@ -1,0 +1,5 @@
+1.volatile关键字
+2.foreach原理
+3.泛型的？与T
+4.为什么重写equale时要重写hashcode
+5.jdbc

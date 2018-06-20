@@ -1,1 +1,4 @@
 1.在mybatis的配置文件中，写sql语句时，用_parameter可代替String类型的参数。
+2.xml配置文件中#{}与${}的区别：
+    #{}会有安全检查，编译后会转变为?,而${}没有，一般用#{},当传入一个特定属性时用${}，如    order by ${sortname}
+3.在mybatis的配置文件中，写if判断时字符串相等时，要写成<if test="shuxing == 'A'.toString()">
