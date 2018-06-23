@@ -1,3 +1,4 @@
+package com.ypy.arithmetic.recursion;
 /**
  * @author joker
  * @data 2018年6月21日09点51分
@@ -24,7 +25,7 @@ public class Hanoi {
 	 * @param toPeg      目的柱
 	 * @param auxPeg     辅助柱
 	 */
-	private static void TowersOfHanoi(int n, char fromPeg, char toPeg, char auxPeg) {
+	public static void TowersOfHanoi(int n, char fromPeg, char toPeg, char auxPeg) {
 		//终止条件
 		if (n == 1) {
 			System.out.println("从"+ fromPeg + "移动圆盘到" +toPeg);
