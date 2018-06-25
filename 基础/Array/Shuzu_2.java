@@ -11,7 +11,7 @@ public class Shuzu_2
 	int i;
 
 	System.arraycopy(arr1, 0, arr2, 1, 2);
-	//  aar1数组下标从0开始的2个，覆盖掉arr2数组下标从1开始的
+	//  aar1数组下标从0开始的2个，覆盖掉arr2数组下标从1开始的2个
 	System.out.printf("arr1 = \n");
 	for (i=0; i<arr1.length; i++)//能直接调用  .length
 	{
