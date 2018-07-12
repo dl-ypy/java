@@ -13,6 +13,9 @@ public class Test {
 		Integer[] arr = {3,0,-99,88,1};
 		Sort.binaryInsertSortDesc(arr);
 		System.out.println(Arrays.toString(arr));
+		HashMap h = new HashMap();
+
+
 	}
 
 }
