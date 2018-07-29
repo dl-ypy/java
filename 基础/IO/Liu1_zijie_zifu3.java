@@ -39,7 +39,9 @@ public class Liu1_zijie_zifu3 {
 			int len = -1;//记录我每次读取的字节的变量的长度
 			StringBuffer sb = new StringBuffer();
 			while((len=ips.read(buf)) != -1) {
-				sb.append(new String(buf, 0, len));//String这个构造方法将b中的读取出来的内容还原成字符串，
+				sb.append(new String(buf, 0, len, "GBK"));//String这个构造方法将b中的读取出来的内容还原成字符串，
+				                                          //因为中国版windows操作系统的默认编码是GBK的
+				                                          //为了读取到正确的字符，需要进行转码
 			}
 			ips.close();
 			System.out.println(sb.toString());
@@ -61,7 +63,7 @@ public class Liu1_zijie_zifu3 {
 	public static void characterReader(String filename) throws IOException {
 		File f = new File(filename);
 		if (f.exists()) {
-			Reader r = new FileReader(f);
+			Reader r = new InputStreamReader(new FileInputStream(f),"GBK"); //转换编码
 			char[] cbuf = new char[1024];
 			int len = -1;
 			StringBuffer sb = new StringBuffer();
