@@ -14,7 +14,7 @@ import java.util.concurrent.Future;
  * @author ypy
  * conclusion：
  *     为什么使用线程池？
- *         多线程中每start时都创建启动一个新线程，创建、销毁线程已经活动的线程都对系统有很大的开销。
+ *         多线程中每start时都创建启动一个新线程，创建、销毁已经活动的线程都对系统有很大的开销。
  *         线程池好处：
  *         降低资源消耗：通过重复利用已创建的线程降低线程创建和销毁造成的消耗；
  *         提高响应速度：当任务到达时，任务可以不需要等到线程创建就能立即执行；
@@ -67,7 +67,7 @@ public class XianCheng_18Pool {
 	
 	//创建一个可缓存线程池
 	//调用execute将重用以前构造的线程（如果线程可用）。
-	//如果现有线程没有可用的，则创建一个新线  程并添加到池中。终止并从缓存中移除那些已有 60 秒钟未被使用的线程。
+	//如果现有线程没有可用的，则创建一个新线程并添加到池中。终止并从缓存中移除那些已有 60 秒钟未被使用的线程。
 	//多用于生存期短的异步任务
 	private static ExecutorService e1 = Executors.newCachedThreadPool();
 	
@@ -86,7 +86,7 @@ public class XianCheng_18Pool {
 	ForkJoinPool e5 = new ForkJoinPool();
 	
 	public static void main(String[] args) {
-		List<Future<String>> resultList = new ArrayList<Future<String>>(); 
+		List<Future<String>> resultList = new ArrayList<Future<String>>(); //用于存放callable任务的返回值
 		//执行runnable任务
 		for (int i=0; i<5; i++) {
 			e1.execute(new Thread1());//提交5个任务
