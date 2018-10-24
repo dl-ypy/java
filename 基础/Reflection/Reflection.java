@@ -21,7 +21,7 @@ public class Test {
 			
 			//第三种加载类方法，常用   必须是全名，要包括包名
 			Class c = Class.forName("Pet");
-			//得到构造方法，参数为有参构造方法中属性类型的class
+			//得到构造方法（构造方法要用public修饰），参数为有参构造方法中属性类型的class
 			Constructor con = c.getConstructor(String.class, int.class);
 			//创建对象
 			Pet p = (Pet) con.newInstance("阿浩", 15);
@@ -30,7 +30,7 @@ public class Test {
 			//修改属性
 			//得到想要修改的属性，参数为属性名
 			Field name = c.getDeclaredField("name");
-			//设置权限
+			//设置权限，表示可以对private属性进行操作
 			name.setAccessible(true);
 			//修改属性，第一个参数为要修改的对象，第二个参数为要修改的值
 			name.set(p, "阿浩2");
@@ -39,11 +39,13 @@ public class Test {
 			//调用方法
 			//方法名，  参数类型的class
 			Method m = c.getDeclaredMethod("eat", String.class);
+			//设置权限，表示可以对private方法进行操作
+			m.setAccessible(true);
 			m.invoke(p, "狗粮");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (NoSuchMethodException e) {
-			e.printStackTrace();
+			e.printStackTrace();	
 		} catch (SecurityException e) {
 			e.printStackTrace();
 		} catch (InstantiationException e) {
