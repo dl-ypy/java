@@ -22,7 +22,7 @@ public class Sort {
 		boolean isSwap = true;//判断是否进行交换过
 		for (int i=0; i<arr.length-1&&isSwap; i++) {
 			isSwap = false;  //开始排序时，设置为没进行交换操作
-			for (int j=i; j<arr.length; j++) {
+			for (int j=i+1; j<arr.length; j++) {
 				if (arr[i] > arr[j]) {
 					int temp = arr[i];
 					arr[i] = arr[j];
@@ -41,7 +41,7 @@ public class Sort {
 		boolean isSwap = true;//判断是否进行交换过
 		for (int i=0; i<arr.length-1&&isSwap; i++) {
 			isSwap = false;  //开始排序时，设置为没进行交换操作
-			for (int j=i; j<arr.length; j++) {
+			for (int j=i+1; j<arr.length; j++) {
 				if (arr[i] < arr[j]) {
 					int temp = arr[i];
 					arr[i] = arr[j];
@@ -67,20 +67,20 @@ public class Sort {
 	 * @param arr
 	 */
 	public static void selectSortAsc(Integer[] arr) {
-		int min = 0;
-		int temp;
-		for (int i=0; i<arr.length-1; i++) {
-			min = arr[i];
-			//一次循环过后，最小的一定在第一位
-			for (int j=i; j<arr.length; j++) {
-				if (arr[j] < min) {
-					min = arr[j];
-					temp = arr[i];
-					arr[i] = arr[j];
-					arr[j] = temp;
-				}
-			}
-		}
+		for (int i=0; i<arr.length; i++) {
+            int min = i;
+            //查找最小的数组下标
+            for (int j=i+1; j<arr.length; j++) {
+                if (arr[min] > arr[j]) {
+                    min = j;
+                }
+            }
+            if (min > i) {
+                int temp = arr[i];
+                arr[i] = arr[min];
+                arr[min] = temp;
+            }
+        }
 	}
 	
 	/**
@@ -88,20 +88,20 @@ public class Sort {
 	 * @param arr
 	 */
 	public static void selectSortDesc(Integer[] arr) {
-		int max = 0;
-		int temp;
-		for (int i=0; i<arr.length-1; i++) {
-			max = arr[i];
-			//一次循环过后，最大的一定在第一位
-			for (int j=i; j<arr.length; j++) {
-				if (arr[j] > max) {
-					max = arr[j];
-					temp = arr[i];
-					arr[i] = arr[j];
-					arr[j] = temp;
-				}
-			}
-		}
+		for (int i=0; i<arr.length; i++) {
+            int max = i;
+            //查找最大的数组下标
+            for (int j=i+1; j<arr.length; j++) {
+                if (arr[max] < arr[j]) {
+                    max = j;
+                }
+            }
+            if (max > i) {
+                int temp = arr[i];
+                arr[i] = arr[max];
+                arr[max] = temp;
+            }
+        }
 	}
 	
 	/**
@@ -123,6 +123,7 @@ public class Sort {
 		for (int i=1; i<arr.length; i++) {
 			min = arr[i];
 			int j;
+			//将第i个循环与前面的进行比较
 			for (j=i-1; j>=0; j--) {
 				if (arr[j] > min) {
 					arr[j+1] = arr[j];
@@ -157,9 +158,11 @@ public class Sort {
 	/**
 	 * 二分法插入升序排序
 	 * 思想：
-	 *      通过二分法查找第0到第i个数中的最小值的下标，
-	 *      将此下标后的数向后移动一位，将第i位数插入此下标所在位置，
-	 *      对所有数重复如上操作。
+	 *      计算0~i-1的中间点，用i索引处的元素与中间值进行比较，
+	 *      假设i索引处的值大，说明元素i要插入中间值与索引为i-1的值之间，
+	 *      反之，就在开始值与中间值之间。
+	 *      不断的通过上述方法进行折半确定要插入的位置。
+	 *      确定位置后，将整个序列后移，将值插入。
 	 * 性能：
 	 *      最坏情况时间复杂度：O(n^2)（不确定）
 	 *      最好情况时间复杂度：O(n^2)
