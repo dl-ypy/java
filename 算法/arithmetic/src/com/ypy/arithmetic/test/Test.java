@@ -2,10 +2,8 @@ package com.ypy.arithmetic.test;
 
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeSet;
 
-import com.ypy.arithmetic.Sort.Sort;
+import com.ypy.arithmetic.sort.Sort;
 
 public class Test {
 
